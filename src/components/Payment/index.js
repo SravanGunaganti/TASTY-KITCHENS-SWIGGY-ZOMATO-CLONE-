@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 
 import CartContext from '../../context/CartContext'
-
+import paymentStatusImg from '../Gallery/PaymentImg.png'
 import './index.css'
 
 const Payment = () => (
@@ -18,7 +18,7 @@ const Payment = () => (
           <div className="payment-container">
             <div className="payment-card">
               <img
-                src="https://res.cloudinary.com/sravangunaganti/image/upload/v1653302135/TastyKitchens/check-circle.1_1_afkqqj.png"
+                src={paymentStatusImg}
                 alt="success"
                 className="payment-image"
               />

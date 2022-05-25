@@ -31,33 +31,33 @@ class CartListView extends Component {
             <Payment />
           ) : (
             <div className="cart-content-container">
-              <table className="cart-table">
-                <caption>
-                  <div className="cart-content">
-                    <h1 className="cart-heading">My Cart</h1>
-                    <button
-                      type="button"
-                      className="remove-all-btn"
-                      onClick={onClickRemoveAllBtn}
-                    >
-                      Remove All
-                    </button>
-                  </div>
-                </caption>
-                <tr className="desktop-cart-header">
-                  <th className="cart-header-items item-heading">Item</th>
-                  <th className="cart-header-item">Quantity</th>
-                  <th className="cart-header-item">price</th>
-                  <th className="cart-header-item">remove</th>
-                </tr>
-                {cartList.map(eachItem => (
-                  <CartItem
-                    key={eachItem.id}
-                    cartItem={eachItem}
-                    value={value}
-                  />
-                ))}
-              </table>
+              <div className="cart-table">
+                <div className="cart-heading-remove-all-btn">
+                  <h1 className="cart-heading">My Cart</h1>
+                  <button
+                    type="button"
+                    className="remove-all-btn"
+                    onClick={onClickRemoveAllBtn}
+                  >
+                    Remove All
+                  </button>
+                </div>
+                <div className="desktop-cart-header">
+                  <h1 className="cart-header-item">Item</h1>
+                  <h1 className="cart-header-quantity">Quantity</h1>
+                  <h1 className="cart-header-price">price</h1>
+                  <h1 className="cart-header-remove">remove</h1>
+                </div>
+                <ul className="cart-list">
+                  {cartList.map(eachItem => (
+                    <CartItem
+                      key={eachItem.id}
+                      cartItem={eachItem}
+                      value={value}
+                    />
+                  ))}
+                </ul>
+              </div>
               <CartTotal orderPlaced={this.orderPlaced} />
             </div>
           )

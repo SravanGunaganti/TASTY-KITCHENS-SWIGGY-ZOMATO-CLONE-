@@ -2,8 +2,6 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import {Redirect} from 'react-router-dom'
 
-import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
-
 import './index.css'
 
 class Login extends Component {
@@ -12,7 +10,7 @@ class Login extends Component {
     password: '',
     showSubmitError: false,
     errorMsg: '',
-    isPasswordVisible: false,
+    // isPasswordVisible: false,
   }
 
   componentDidMount() {
@@ -37,12 +35,6 @@ class Login extends Component {
   }
 
   onSubmitFailure = errorMessage => {
-    // let errorMessage
-    // if (errorMsg === "username and password didn't match") {
-    //   errorMessage = 'Please enter a valid Username & Password'
-    // } else if (errorMsg === 'invalid username') {
-    //   errorMessage = 'Invalid Username'
-    // }
     this.setState({errorMsg: errorMessage, showSubmitError: true})
   }
 
@@ -65,20 +57,20 @@ class Login extends Component {
     }
   }
 
-  onClickShow = () => {
-    this.setState({
-      isPasswordVisible: true,
-    })
-  }
+  //   onClickShow = () => {
+  //     this.setState({
+  //       isPasswordVisible: true,
+  //     })
+  //   }
 
-  onClickHide = () => {
-    this.setState({
-      isPasswordVisible: false,
-    })
-  }
+  //   onClickHide = () => {
+  //     this.setState({
+  //       isPasswordVisible: false,
+  //     })
+  //   }
 
   renderPasswordField = () => {
-    const {password, isPasswordVisible} = this.state
+    const {password} = this.state
     return (
       <>
         <label className="input-label" htmlFor="password">
@@ -86,29 +78,12 @@ class Login extends Component {
         </label>
         <div className="password-container">
           <input
-            type={isPasswordVisible ? 'text' : 'password'}
+            type="password"
             id="password"
             className="password-input-field"
             value={password}
             onChange={this.onChangePassword}
           />
-          {isPasswordVisible ? (
-            <button
-              type="button"
-              className="eye-button"
-              onClick={this.onClickHide}
-            >
-              <AiFillEyeInvisible className="eye" />
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="eye-button"
-              onClick={this.onClickShow}
-            >
-              <AiFillEye className="eye" />
-            </button>
-          )}
         </div>
       </>
     )

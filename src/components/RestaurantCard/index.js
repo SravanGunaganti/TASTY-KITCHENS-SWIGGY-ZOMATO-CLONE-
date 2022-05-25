@@ -1,27 +1,38 @@
 import {Link} from 'react-router-dom'
-import {ImStarFull} from 'react-icons/im'
+import {AiFillStar} from 'react-icons/ai'
 
 import './index.css'
 
 const RestaurantCard = props => {
   const {restaurant} = props
-  const {id, cuisine, imageUrl, name, rating, totalReviews} = restaurant
+  const {
+    id,
+    cuisine,
+    imageUrl,
+    name,
+    rating,
+    ratingColor,
+    totalReviews,
+  } = restaurant
 
   return (
-    <Link to={`/restaurant/${id}`} className="restaurant-link">
-      <li testid="restaurant-item" className="restaurant-card">
-        <img src={imageUrl} alt="restaurant" className="restaurant-image" />
-        <div className="restaurant-info">
-          <h1 className="restaurant-name">{name}</h1>
-          <p className="restaurant-cuisine">{cuisine}</p>
-          <div className="star-rating">
-            <ImStarFull className="star" />
-            <p className="rest-rating">{rating}</p>
-            <p className="user-total-reviews">({totalReviews} rating)</p>
+    <li testid="restaurant-item" className="restaurant-li">
+      <Link className="li-restaurant-link" to={`/restaurant/${id}`}>
+        <img className="li-restaurant-image" src={imageUrl} alt="restaurant" />
+        <div className="li-restaurant-container">
+          <h1 className="li-restaurant-name">{name}</h1>
+          <p className="li-restaurant-type">{cuisine}</p>
+
+          <div className="li-restaurant-ratings-container">
+            <AiFillStar className="li-star-icon" style={{color: ratingColor}} />
+            <h1 className="li-restaurant-rating">{rating}</h1>
+            <p className="li-restaurant-ratings-count">
+              ({totalReviews} ratings)
+            </p>
           </div>
         </div>
-      </li>
-    </Link>
+      </Link>
+    </li>
   )
 }
 

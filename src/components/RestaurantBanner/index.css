@@ -1,140 +1,131 @@
-.banner-bg {
-  width: 100%;
-  background: url('https://res.cloudinary.com/sravangunaganti/image/upload/v1653308571/TastyKitchens/Frame_279_ycq2xc.png');
+.restaurant-banner {
+  margin-bottom: 24px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-size: cover;
+  background-image: url('https://res.cloudinary.com/sravangunaganti/image/upload/v1653308571/TastyKitchens/Frame_279_ycq2xc.png');
 }
-
-.banner-container {
-  width: 90%;
-  max-width: 1200px;
-  display: flex;
-  align-items: center;
-}
-
-.res-image {
-  width: 100px;
-  height: 100px;
-  margin-right: 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .res-image {
-    width: 445px;
-    height: 280px;
-    border-radius: 8px;
-  }
-  .banner-bg {
-    margin-top: 30px;
+@media screen and (max-width: 300px) {
+  .restaurant-banner {
+    flex-direction: column;
+    padding-bottom: 8px;
   }
 }
-
-.res-info {
-  /* display: inline-flex; */
-  flex-direction: column;
-  justify-content: center;
+@media screen and (max-width: 576px) {
+  .restaurant-name {
+    font-size: 10px;
+  }
 }
-.res-name {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 20px;
-  letter-spacing: 0.2px;
+.restaurant-image {
+  width: 160px;
+  height: 160px;
+  align-items: flex-start;
+  border-bottom-right-radius: 100px;
+}
+
+.restaurant-details-container {
+  padding: 24px 16px;
+  align-self: center;
+}
+
+.restaurant-name {
   color: #ffffff;
-  margin-bottom: 0px;
-  /* margin: -5px; */
+  font-size: 12px;
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
-@media screen and (max-width: 567px) {
-  .res-name {
-    font-size: 12px;
-    line-height: 0px;
-  }
+.restaurant-cuisine {
+  color: #eeeeee;
+  font-size: 12px;
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
-.res-cuisine {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 8px;
-  color: #ffffff;
-}
-
-@media screen and (min-width: 768px) {
-  .res-cuisine {
-    font-size: 16px;
-    line-height: 12px;
-  }
-}
-
-.res-location {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 8px;
-  color: #ffffff;
-}
-
-@media screen and (min-width: 768px) {
-  .res-location {
-    font-size: 16px;
-    line-height: 24px;
-  }
-}
-
-.rating-rate-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.rating-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.rating {
-  font-family: DM Sans;
-  font-style: normal;
-  font-weight: bold;
+.restaurant-location {
+  color: #eeeeee;
   font-size: 10px;
-  line-height: 5px;
+  margin-top: 0;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.restaurant-banner-sub-container {
+  display: flex;
+}
+
+.restaurant-rating-icon-container {
   display: flex;
   align-items: center;
+  margin-bottom: 2px;
+}
+
+.restaurant-star-icon {
   color: #ffffff;
-  margin-bottom: 0px;
+  font-size: 10px;
+  margin-right: 2px;
 }
 
-.sub-text {
-  font-family: DM Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 8px;
-  line-height: 5px;
-  display: flex;
-  align-items: center;
+.restaurant-rating {
+  margin: 0;
+  color: #eeeeee;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.restaurant-reviews {
+  margin: 0;
   color: #e2e8f0;
-}
-
-.separation-line {
-  width: 40px;
-  height: 0px;
-  border: 1px solid #e2e8f0;
-  transform: rotate(90deg);
-  margin: 0px;
+  font-size: 10px;
 }
 @media screen and (min-width: 768px) {
-  .rating {
-    font-size: 14px;
-    line-height: 12px;
+  .restaurant-banner {
+    margin-bottom: 36px;
+    align-items: center;
+    flex-direction: row;
+    padding: 25px;
   }
-  .sub-text {
-    font-size: 12px;
-    line-height: 16px;
+
+  .restaurant-image {
+    width: 280px;
+    height: auto;
+    /* aspect-ratio: 5/3.35; */
+    border-radius: 16px;
+  }
+
+  .restaurant-details-container {
+    margin-left: 24px;
+    padding: 0;
+  }
+
+  .restaurant-name {
+    font-size: 24px;
+  }
+  .restaurant-cuisine {
+    font-size: 14px;
+  }
+  .restaurant-location {
+    font-size: 14px;
+  }
+  .restaurant-rating {
+    font-size: 14px;
+  }
+  .restaurant-reviews {
+    font-size: 14px;
+  }
+  .restaurant-rating {
+    font-size: 14px;
+  }
+  .restaurant-star-icon {
+    font-size: 14px;
+  }
+  .food-items-container {
+    padding: 0 48px;
+    margin-bottom: 36px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .restaurant-banner {
+    padding: 36px 36px;
+    margin-bottom: 48px;
   }
 }

@@ -29,12 +29,12 @@ const CartItem = props => (
 
       return (
         <>
-          <tr className="mobile-cart-item" testid="cartItem">
-            <td className="mobile-table-item-1">
-              <img className="cart-product-image" src={imageUrl} alt={name} />
-            </td>
-            <td className="mobile-table-item-2">
-              <div className="mobile-table-cart-items">
+          <li className="mobile-cart-item" testid="cartItem">
+            <div className="cart-card">
+              <div className="mobile-cart-item-image-card">
+                <img className="cart-product-image" src={imageUrl} alt={name} />
+              </div>
+              <div className="mobile-cart-item-info-card">
                 <h1 className="cart-product-title">{name}</h1>
                 <div className="cart-quantity-container">
                   <button
@@ -66,7 +66,7 @@ const CartItem = props => (
                     /-
                   </p>
                   <button
-                    className="remove-button"
+                    className="remove-button remove-btn-1"
                     type="button"
                     onClick={onClickRemoveCartItem}
                   >
@@ -74,58 +74,59 @@ const CartItem = props => (
                   </button>
                 </div>
               </div>
-            </td>
-          </tr>
+            </div>
+            <button
+              className="remove-button remove-btn-2"
+              type="button"
+              onClick={onClickRemoveCartItem}
+            >
+              Remove
+            </button>
+          </li>
 
-          <tr className="cart-item" testid="cartItem">
-            <td className="t-item">
-              <div className="cart-product-title-brand-container">
-                <img className="cart-product-image" src={imageUrl} alt={name} />
-                <h1 className="cart-product-title">{name}</h1>
-              </div>
-            </td>
-            <td className="t-item">
-              <div className="cart-quantity-container">
-                <button
-                  type="button"
-                  className="quantity-controller-button"
-                  testid="decrement-quantity"
-                  onClick={decreaseQuantity}
-                >
-                  <BsDashSquare color="#52606D" size={12} />
-                </button>
-                <p className="cart-quantity" testid="item-quantity">
-                  {quantity}
-                </p>
-                <button
-                  type="button"
-                  className="quantity-controller-button"
-                  testid="increment-quantity"
-                  onClick={increaseQuantity}
-                >
-                  <BsPlusSquare color="#52606D" size={12} />
-                </button>
-              </div>
-            </td>
-            <td className="t-item">
-              <div className="total-price-remove-container">
-                <p className="cart-total-price">
-                  <span>
-                    <FaRupeeSign color="#616E7C" size={12} />
-                  </span>{' '}
-                  {cost}
-                  /-
-                </p>
-                <button
-                  className="remove-button"
-                  type="button"
-                  onClick={onClickRemoveCartItem}
-                >
-                  Remove
-                </button>
-              </div>
-            </td>
-            <td className="t-item">
+          <li className="cart-item" testid="cartItem">
+            <div className="cart-product-title-brand-container">
+              <img className="cart-product-image" src={imageUrl} alt={name} />
+              <h1 className="cart-product-title">{name}</h1>
+            </div>
+            <div className="cart-quantity-container">
+              <button
+                type="button"
+                className="quantity-controller-button"
+                testid="decrement-quantity"
+                onClick={decreaseQuantity}
+              >
+                <BsDashSquare color="#52606D" size={12} />
+              </button>
+              <p className="cart-quantity" testid="item-quantity">
+                {quantity}
+              </p>
+              <button
+                type="button"
+                className="quantity-controller-button"
+                testid="increment-quantity"
+                onClick={increaseQuantity}
+              >
+                <BsPlusSquare color="#52606D" size={12} />
+              </button>
+            </div>
+            <div className="cart-price-remove-container">
+              <p className="cart-total-price">
+                <span>
+                  <FaRupeeSign color="#616E7C" size={12} />
+                </span>{' '}
+                {cost}
+                /-
+              </p>
+              {/* <button
+                className="remove-button"
+                type="button"
+                onClick={onClickRemoveCartItem}
+              >
+                Remove
+              </button> */}
+            </div>
+            <div className="button-container">
               <button
                 className="delete-button"
                 type="button"
@@ -134,8 +135,8 @@ const CartItem = props => (
               >
                 <AiFillCloseCircle color="#616E7C" size={20} />
               </button>
-            </td>
-          </tr>
+            </div>
+          </li>
         </>
       )
     }}

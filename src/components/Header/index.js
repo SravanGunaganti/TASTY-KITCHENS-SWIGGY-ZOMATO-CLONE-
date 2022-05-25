@@ -1,148 +1,111 @@
-import {Link, withRouter} from 'react-router-dom'
+import {Component} from 'react'
+import {withRouter, Link} from 'react-router-dom'
 
 import {GiHamburgerMenu} from 'react-icons/gi'
-import {AiOutlineCloseCircle} from 'react-icons/ai'
-
+import {AiFillCloseCircle} from 'react-icons/ai'
 import Cookies from 'js-cookie'
 import CartContext from '../../context/CartContext'
+
 import './index.css'
 
-const Header = props => (
-  <CartContext.Consumer>
-    {value => {
-      const {
-        cartList,
-        showMobileNavMenu,
-        mobileNavMenu,
-        hideMobileNavMenu,
-      } = value
-      const cartItemsCount = cartList.length
-      const display = showMobileNavMenu ? 'showMobileNav' : 'nav-menu-mobile'
+class Header extends Component {
+  state = {
+    showNavItems: false,
+  }
 
-      const onClickLogout = () => {
-        const {history} = props
-        Cookies.remove('jwt_token')
-        history.replace('/login')
-      }
+  toggleNavItemsView = () => {
+    this.setState(preState => ({
+      showNavItems: !preState.showNavItems,
+    }))
+  }
 
-      const getColor = current => {
-        const {history} = props
-        if (history.location.pathname === current) {
-          console.log(history.location.pathname)
-          return '#f7931e'
-        }
-        return '#334155'
-      }
+  onClickLogout = () => {
+    Cookies.remove('jwt_token')
+    const {history} = this.props
+    history.replace('/login')
+  }
 
-      const onClickMobileNavMenu = () => {
-        mobileNavMenu()
-        console.log(display)
-      }
-      const onClickMobileNavMenuHide = () => {
-        hideMobileNavMenu()
-        console.log(display)
-      }
+  getClassNameFor = path => {
+    const {match} = this.props
+    const currentPath = match.path
+    if (currentPath === path) {
+      return 'nav-item-selected-link'
+    }
+    return 'nav-item-link'
+  }
 
-      const renderNavbarLogo = () => (
-        <div className="navbar-logo-container">
-          <Link to="/" className="nav-link">
+  renderNavItemsContainer = mobile => (
+    <CartContext.Consumer>
+      {value => {
+        const {cartList} = value
+        const cartItemsCount = cartList.length
+        return (
+          <ul className={`nav-items-container${mobile}`}>
+            <li className="nav-item">
+              <Link className={this.getClassNameFor('/')} to="/">
+                Home
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className={this.getClassNameFor('/cart')} to="/cart">
+                Cart
+                {cartItemsCount > 0 && (
+                  <span className="cart-count-badge">{cartList.length}</span>
+                )}
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <button
+                className="logout-button"
+                type="button"
+                onClick={this.onClickLogout}
+              >
+                Logout
+              </button>
+            </li>
+
+            <button
+              className="nav-button"
+              type="button"
+              onClick={this.toggleNavItemsView}
+            >
+              <AiFillCloseCircle className="close-icon" />
+            </button>
+          </ul>
+        )
+      }}
+    </CartContext.Consumer>
+  )
+
+  render() {
+    const {showNavItems} = this.state
+    return (
+      <nav className="navbar">
+        <div className="logo-hamburger-container">
+          <Link className="website-logo-container" to="/">
             <img
               className="website-logo"
               src="https://res.cloudinary.com/sravangunaganti/image/upload/v1652874338/TastyKitchens/Vector_gvsrj4.png"
               alt="website logo"
             />
+            <h1 className="website-title">Tasty Kitchens</h1>
           </Link>
-          <Link to="/" className="nav-link">
-            <h1 className="logo-heading">Tasty Kitchens</h1>
-          </Link>
-        </div>
-      )
 
-      return (
-        <nav className="nav-header">
-          <div className="nav-content">
-            <div className="navbar-mobile-container">
-              {renderNavbarLogo()}
-              <button type="button" className="hamburger-btn">
-                <GiHamburgerMenu
-                  size={25}
-                  className="hamburger"
-                  onClick={onClickMobileNavMenu}
-                />
-              </button>
-            </div>
-            <div className="navbar-large-container">
-              {renderNavbarLogo()}
-              <ul className="nav-menu-desktop">
-                <Link to="/" className="nav-link">
-                  <li className="nav-menu-item" style={{color: getColor('/')}}>
-                    Home
-                  </li>
-                </Link>
-                <Link to="/cart" className="nav-link">
-                  <li
-                    className="nav-menu-item"
-                    style={{color: getColor('/cart')}}
-                  >
-                    Cart
-                    {cartItemsCount > 0 && (
-                      <span className="cart-count-badge">
-                        {cartList.length}
-                      </span>
-                    )}
-                  </li>
-                </Link>
-              </ul>
-              <button
-                type="button"
-                className="logout-desktop-btn"
-                onClick={onClickLogout}
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-          <div className={display}>
-            <div className="modal-container">
-              <div className="nav-link-container">
-                <Link to="/" className="nav-link">
-                  <p className="nav-menu-item" style={{color: getColor('/')}}>
-                    Home
-                  </p>
-                </Link>
-                <Link to="/cart" className="nav-link">
-                  <p
-                    className="nav-menu-item"
-                    style={{color: getColor('/cart')}}
-                  >
-                    Cart
-                    {cartItemsCount > 0 && (
-                      <span className="cart-count-badge">
-                        {cartList.length}
-                      </span>
-                    )}
-                  </p>
-                </Link>
-                <button
-                  type="button"
-                  className="logout-desktop-btn"
-                  onClick={onClickLogout}
-                >
-                  Logout
-                </button>
-              </div>
-              <button type="button" className="close-btn">
-                <AiOutlineCloseCircle
-                  size={18}
-                  onClick={onClickMobileNavMenuHide}
-                />
-              </button>
-            </div>
-          </div>
-        </nav>
-      )
-    }}
-  </CartContext.Consumer>
-)
+          <button
+            type="button"
+            className="nav-button"
+            onClick={this.toggleNavItemsView}
+          >
+            <GiHamburgerMenu className="hamburger-icon" />
+          </button>
+        </div>
+        {this.renderNavItemsContainer('')}
+        {showNavItems && this.renderNavItemsContainer('-mobile')}
+      </nav>
+    )
+  }
+}
 
 export default withRouter(Header)

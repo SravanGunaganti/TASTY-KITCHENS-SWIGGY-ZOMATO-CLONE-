@@ -21,7 +21,6 @@ const getCartListFromLocalStorage = () => {
 class App extends Component {
   state = {
     cartList: getCartListFromLocalStorage(),
-    showMobileNavMenu: false,
   }
 
   removeAllCartItems = () => {
@@ -89,31 +88,18 @@ class App extends Component {
     }
   }
 
-  mobileNavMenu = () => {
-    this.setState({
-      showMobileNavMenu: true,
-    })
-  }
-
-  hideMobileNavMenu = () => {
-    this.setState({showMobileNavMenu: false})
-  }
-
   render() {
-    const {cartList, showMobileNavMenu} = this.state
+    const {cartList} = this.state
     localStorage.setItem('cartData', JSON.stringify(cartList))
     return (
       <CartContext.Provider
         value={{
           cartList,
-          showMobileNavMenu,
           addCartItem: this.addCartItem,
           removeCartItem: this.removeCartItem,
           incrementCartItemQuantity: this.incrementCartItemQuantity,
           decrementCartItemQuantity: this.decrementCartItemQuantity,
           removeAllCartItems: this.removeAllCartItems,
-          mobileNavMenu: this.mobileNavMenu,
-          hideMobileNavMenu: this.hideMobileNavMenu,
         }}
       >
         <Switch>

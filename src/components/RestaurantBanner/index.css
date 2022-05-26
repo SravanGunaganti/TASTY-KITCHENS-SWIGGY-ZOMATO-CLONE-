@@ -81,7 +81,7 @@
     margin-bottom: 36px;
     align-items: center;
     flex-direction: row;
-    padding: 25px;
+    padding: 25px 48px;
   }
 
   .restaurant-image {
@@ -123,9 +123,9 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   .restaurant-banner {
-    padding: 36px 36px;
+    padding: 36px 100px;
     margin-bottom: 48px;
   }
 }

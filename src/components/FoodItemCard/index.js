@@ -63,7 +63,7 @@ class FoodItemCard extends Component {
                   <p className="food-item-cost">{cost}</p>
                 </div>
                 <div className="rating-cont">
-                  <ImStarFull size={16} color="#FFCC00" />
+                  <ImStarFull size={16} color="#ffcc00" />
                   <p className="food-item-rating">{rating}</p>
                 </div>
                 {quantity === 0 ? (

@@ -14,8 +14,7 @@
 }
 
 .popular-restaurants {
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
 }
 @media screen and (min-width: 567px) and (max-width: 768px) {
   .restaurants-list {

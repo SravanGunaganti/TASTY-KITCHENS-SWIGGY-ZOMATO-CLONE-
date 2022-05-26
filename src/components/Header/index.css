@@ -2,6 +2,7 @@
   padding: 8px 24px;
   background-color: #f8fafc;
   /* display: flex; */
+  margin: 0;
 }
 
 .logo-hamburger-container {
@@ -79,7 +80,7 @@
   background-color: #f7931e;
 }
 
-.logout-button:hover {
+.logout-button {
   background-color: #ffaa4a;
 }
 

@@ -2,6 +2,7 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 import {Redirect} from 'react-router-dom'
+import tastyKitchensLogo from '../Gallery/TastyKitchens.png'
 
 import './index.css'
 
@@ -15,7 +16,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    document.title = 'Project by Sravan Gunaganti'
+    document.title = 'Tasty Kitchens by Sravan Gunaganti'
   }
 
   onChangeUsername = event => {
@@ -84,6 +85,7 @@ class Login extends Component {
             className="password-input-field"
             value={password}
             onChange={this.onChangePassword}
+            placeholder="Password"
           />
           {isPasswordVisible ? (
             <button
@@ -120,6 +122,7 @@ class Login extends Component {
           className="username-input-field"
           value={username}
           onChange={this.onChangeUsername}
+          placeholder="Username"
         />
       </>
     )
@@ -144,7 +147,7 @@ class Login extends Component {
           <form className="form-container" onSubmit={this.submitForm}>
             <img
               className="large-device-logo"
-              src="https://res.cloudinary.com/sravangunaganti/image/upload/v1652874338/TastyKitchens/Vector_gvsrj4.png"
+              src={tastyKitchensLogo}
               alt="website logo"
             />
             <h1 className="login-heading-ele">Tasty Kitchens</h1>

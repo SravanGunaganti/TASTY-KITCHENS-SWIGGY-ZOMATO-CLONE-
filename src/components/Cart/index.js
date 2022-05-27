@@ -12,10 +12,6 @@ import CartContext from '../../context/CartContext'
 import './index.css'
 
 class Cart extends Component {
-  orderPlaced = () => {
-    this.setState(prevState => ({isOrderPlaced: !prevState.isOrderPlaced}))
-  }
-
   render() {
     return (
       <CartContext.Consumer>

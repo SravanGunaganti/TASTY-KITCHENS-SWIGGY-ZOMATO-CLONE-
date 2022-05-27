@@ -5,6 +5,7 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import Cookies from 'js-cookie'
 import CartContext from '../../context/CartContext'
+import tastyKitchensLogo from '../Gallery/TastyKitchens.png'
 
 import './index.css'
 
@@ -87,7 +88,7 @@ class Header extends Component {
           <Link className="website-logo-container" to="/">
             <img
               className="website-logo"
-              src="https://res.cloudinary.com/sravangunaganti/image/upload/v1652874338/TastyKitchens/Vector_gvsrj4.png"
+              src={tastyKitchensLogo}
               alt="website logo"
             />
             <h1 className="website-title">Tasty Kitchens</h1>

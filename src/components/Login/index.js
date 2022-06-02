@@ -15,10 +15,6 @@ class Login extends Component {
     isPasswordVisible: false,
   }
 
-  componentDidMount() {
-    document.title = 'Tasty Kitchens by Sravan Gunaganti'
-  }
-
   onChangeUsername = event => {
     this.setState({username: event.target.value})
   }

@@ -31,7 +31,7 @@ class CartListView extends Component {
             <Payment />
           ) : (
             <div className="cart-content-container">
-              <div className="cart-table">
+              <div className="cart-card-details">
                 <div className="cart-heading-remove-all-btn">
                   <h1 className="cart-heading">My Cart</h1>
                   <button
@@ -44,6 +44,7 @@ class CartListView extends Component {
                 </div>
                 <div className="desktop-cart-header">
                   <h1 className="cart-header-item">Item</h1>
+
                   <h1 className="cart-header-quantity">Quantity</h1>
                   <h1 className="cart-header-price">price</h1>
                   <h1 className="cart-header-remove">remove</h1>

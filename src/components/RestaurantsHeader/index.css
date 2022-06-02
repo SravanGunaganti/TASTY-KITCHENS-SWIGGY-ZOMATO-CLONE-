@@ -40,6 +40,7 @@
 @media screen and (min-width: 768px) {
   .sort-container {
     justify-content: flex-end;
+    width: 33%;
   }
   .restaurant-header {
     margin-top: 50px;
@@ -87,7 +88,7 @@
     font-size: 24px;
   }
   .sort-text {
-    font-size: 16px;
+    font-size: 13px;
   }
   .select-options {
     font-size: 16px;
